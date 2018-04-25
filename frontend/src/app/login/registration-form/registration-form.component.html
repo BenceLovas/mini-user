@@ -1,9 +1,12 @@
 <div class="wrapper">
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
+  <mat-expansion-panel [expanded]="isPanelOpen">
+    <mat-expansion-panel-header (click)="togglePanel()">
       <mat-panel-title>
         REGISTER
       </mat-panel-title>
+      <mat-panel-description>
+        {{isPanelOpen ? 'Collapse' : 'Expand'}}
+      </mat-panel-description>
     </mat-expansion-panel-header>
     <form [formGroup]="registrationForm" (ngSubmit)="onSubmit(registrationForm.value)">
       <mat-form-field>

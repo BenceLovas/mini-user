@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 
 @Component({
@@ -8,6 +8,8 @@ import {FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validat
 })
 export class RegistrationFormComponent implements OnInit {
 
+  @Input() public isPanelOpen;
+  @Output() public toggleEvent = new EventEmitter();
   registrationForm: FormGroup;
   matcher = {
     isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -41,6 +43,10 @@ export class RegistrationFormComponent implements OnInit {
 
   onSubmit(form: any) {
     console.log(form);
+  }
+
+  togglePanel() {
+    this.toggleEvent.emit(this.isPanelOpen);
   }
 
 }
