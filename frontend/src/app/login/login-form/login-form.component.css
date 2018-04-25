@@ -1,0 +1,42 @@
+form {
+  padding: 0 2vw;
+  display: grid;
+  grid-template-columns: 100%;
+}
+
+.wrapper {
+  margin-top: 5%;
+  margin-bottom: 3%;
+}
+
+.mat-expansion-panel-header-description {
+  flex-grow: 0;
+}
+
+::ng-deep .mat-expansion-indicator:after {
+  margin-bottom: 7px;
+}
+
+mat-panel-title,
+.button-text {
+  font-weight: bold;
+}
+
+.button-text {
+  color: white;
+}
+
+.submit-button {
+  margin-top: 10px;
+  background-color: #0D47A1;
+}
+
+#error-message {
+  color: #f44336;
+  font-weight: 400;
+  line-height: 1.125;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 75%;
+  margin-top: 0;
+  padding: 0 2vw;
+}
