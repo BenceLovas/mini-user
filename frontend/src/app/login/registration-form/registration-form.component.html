@@ -1,3 +1,54 @@
-<p>
-  registration-form works!
-</p>
+<div class="wrapper">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        REGISTER
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit(registrationForm.value)">
+      <mat-form-field>
+        <input matInput #username name="username" type="text" placeholder="Username" [formControl]="registrationForm.controls['username']" [errorStateMatcher]="matcher"/>
+        <mat-icon matSuffix>person</mat-icon>
+        <mat-hint align="end">{{username.value.length}} / 30</mat-hint>
+        <mat-error *ngIf="registrationForm.controls['username'].hasError('minlength')">
+          Username is too <strong>short</strong>
+          <span [style.float]="'right'">{{username.value.length}} / 5</span>
+        </mat-error>
+        <mat-error *ngIf="registrationForm.controls['username'].hasError('maxlength')">
+          Username is too <strong>long</strong>
+          <span [style.float]="'right'">{{username.value.length}} / 30</span>
+        </mat-error>
+        <mat-error *ngIf="registrationForm.controls['username'].hasError('required')">
+          Username is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput #password name="password" type="password" placeholder="Password" [formControl]="registrationForm.controls['password']" [errorStateMatcher]="matcher"/>
+        <mat-icon matSuffix>lock</mat-icon>
+        <mat-hint align="end">{{password.value.length}} / 20</mat-hint>
+        <mat-error *ngIf="registrationForm.controls['password'].hasError('minlength')">
+          Password is too <strong>short</strong>
+          <span [style.float]="'right'">{{password.value.length}} / 8</span>
+        </mat-error>
+        <mat-error *ngIf="registrationForm.controls['password'].hasError('maxlength')">
+          Password is too <strong>long</strong>
+          <span [style.float]="'right'">{{password.value.length}} / 20</span>
+        </mat-error>
+        <mat-error *ngIf="registrationForm.controls['password'].hasError('required')">
+          Password is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput #email name="email" type="email" placeholder="Email Address" [formControl]="registrationForm.controls['email']" [errorStateMatcher]="matcher" />
+        <mat-icon matSuffix>email</mat-icon>
+        <mat-error *ngIf="registrationForm.controls['email'].hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="registrationForm.controls['email'].hasError('pattern') && !registrationForm.controls['email'].hasError('required')">
+          Email is <strong>not valid</strong>
+        </mat-error>
+      </mat-form-field>
+      <button mat-button class="submit-button" type="submit" [disabled]="registrationForm.invalid"><span class="button-text">SEND</span></button>
+    </form>
+  </mat-expansion-panel>
+</div>
