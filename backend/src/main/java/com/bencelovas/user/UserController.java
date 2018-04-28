@@ -1,6 +1,7 @@
 package com.bencelovas.user;
 
 import com.bencelovas.user.exception.EmailAlreadyTakenException;
+import com.bencelovas.user.exception.InvalidCredentialsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,10 +40,18 @@ public class UserController {
     }
 
     @PostMapping("/user/login")
-    public ResponseEntity login(@RequestBody User userInput) {
-        System.out.println(userInput.getEmail());
-        System.out.println(userInput.getPassword());
-        return ResponseEntity.ok(Collections.singletonMap("response", "success"));
+    public ResponseEntity login(@RequestBody User userInput, HttpSession session) {
+        try {
+            Long userID = userService.validateUser(userInput);
+            session.setAttribute("userID", userID);
+            return ResponseEntity
+                    .ok(Collections.singletonMap("response", "success"));
+        } catch (InvalidCredentialsException e) {
+            System.out.println(e.getMessage());
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body(Collections.singletonMap("response", "not valid"));
+        }
     }
 
 }

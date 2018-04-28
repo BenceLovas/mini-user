@@ -1,6 +1,7 @@
 package com.bencelovas.user;
 
 import com.bencelovas.user.exception.EmailAlreadyTakenException;
+import com.bencelovas.user.exception.InvalidCredentialsException;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -26,4 +27,14 @@ public class UserService {
             throw new EmailAlreadyTakenException("Email already in use");
         }
     }
+
+    public Long validateUser(User user) throws InvalidCredentialsException {
+        User foundUser = userRepository.findUserByEmail(user.getEmail());
+        if (foundUser != null && BCrypt.checkpw(user.getPassword(), foundUser.getPassword())) {
+            return foundUser.getId();
+        } else {
+            throw new InvalidCredentialsException("Email or password is invalid");
+        }
+    }
+
 }
