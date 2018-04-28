@@ -1,5 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from '@angular/forms';
+import {UserService} from '../../user.service';
+import {User} from '../../user';
 
 @Component({
   selector: 'app-login-form',
@@ -19,8 +21,9 @@ export class LoginFormComponent implements OnInit {
   };
 
   constructor(
-    private formBuilder: FormBuilder
-  ) { }
+    private userService: UserService,
+    private formBuilder: FormBuilder) {
+  }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -37,7 +40,20 @@ export class LoginFormComponent implements OnInit {
   }
 
   onSubmit(form: any) {
-    console.log(form);
+    const user: User = {
+      email: form.email,
+      password: form.password,
+    };
+    this.userService
+      .loginUser(user)
+      .subscribe(
+        data => {
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        }
+      );
   }
 
   togglePanel() {
