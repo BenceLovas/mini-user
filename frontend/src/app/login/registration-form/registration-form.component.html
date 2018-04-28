@@ -50,6 +50,9 @@
         <mat-error *ngIf="registrationForm.controls['email'].hasError('pattern') && !registrationForm.controls['email'].hasError('required')">
           Email is <strong>not valid</strong>
         </mat-error>
+        <mat-error *ngIf="registrationForm.controls['email'].hasError('emailTaken')">
+          Email is <strong>already in use</strong>
+        </mat-error>
       </mat-form-field>
       <button mat-button class="submit-button" type="submit" [disabled]="registrationForm.invalid"><span class="button-text">SEND</span></button>
     </form>

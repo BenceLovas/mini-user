@@ -13,6 +13,7 @@ export class RegistrationFormComponent implements OnInit {
   @Input() public isPanelOpen;
   @Output() public toggleEvent = new EventEmitter();
   registrationForm: FormGroup;
+  failedEmail: string;
   matcher = {
     isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
       const isSubmitted = form && form.submitted;
@@ -40,8 +41,17 @@ export class RegistrationFormComponent implements OnInit {
       'email': ['', Validators.compose([
         Validators.required,
         Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/),
+        this.validateEmail.bind(this),
       ])],
     });
+  }
+
+  validateEmail(control: FormControl) {
+    if (control.value === this.failedEmail) {
+      return { emailTaken: true };
+    } else {
+      return null;
+    }
   }
 
   onSubmit(form: any) {
@@ -58,6 +68,8 @@ export class RegistrationFormComponent implements OnInit {
         },
         error => {
           console.log(error);
+          this.failedEmail = error.email;
+          this.registrationForm.controls['email'].updateValueAndValidity();
         }
       );
   }
