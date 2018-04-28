@@ -40,6 +40,10 @@ public class User {
         this.email = email;
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public String getName() {
         return name;
     }
@@ -51,5 +55,5 @@ public class User {
     public String getEmail() {
         return email;
     }
-    
+
 }
