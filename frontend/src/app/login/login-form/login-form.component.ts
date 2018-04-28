@@ -13,6 +13,7 @@ export class LoginFormComponent implements OnInit {
   @Input() public isPanelOpen;
   @Output() public toggleEvent = new EventEmitter();
   loginForm: FormGroup;
+  invalidCredentials = false;
   matcher = {
     isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
       const isSubmitted = form && form.submitted;
@@ -52,6 +53,7 @@ export class LoginFormComponent implements OnInit {
         },
         error => {
           console.log(error);
+          this.invalidCredentials = true;
         }
       );
   }

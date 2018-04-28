@@ -37,6 +37,6 @@ mat-panel-title,
   line-height: 1.125;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   font-size: 75%;
-  margin-top: 0;
+  margin-bottom: 10px;
   padding: 0 2vw;
 }
