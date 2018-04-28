@@ -28,4 +28,11 @@ public class UserController {
         return ResponseEntity.ok(Collections.singletonMap("response", "success"));
     }
 
+    @PostMapping("/user/login")
+    public ResponseEntity login(@RequestBody User userInput) {
+        System.out.println(userInput.getEmail());
+        System.out.println(userInput.getPassword());
+        return ResponseEntity.ok(Collections.singletonMap("response", "success"));
+    }
+
 }
