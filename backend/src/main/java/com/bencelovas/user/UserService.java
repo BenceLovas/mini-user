@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService {
 
@@ -35,6 +37,10 @@ public class UserService {
         } else {
             throw new InvalidCredentialsException("Email or password is invalid");
         }
+    }
+
+    public List<User> getUsers() {
+        return userRepository.findAll();
     }
 
 }
