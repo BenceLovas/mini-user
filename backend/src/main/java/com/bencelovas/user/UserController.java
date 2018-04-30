@@ -42,10 +42,10 @@ public class UserController {
     @PostMapping("/user/login")
     public ResponseEntity login(@RequestBody User userInput, HttpSession session) {
         try {
-            Long userID = userService.validateUser(userInput);
-            session.setAttribute("userID", userID);
+            User foundUser = userService.validateUser(userInput);
+            session.setAttribute("userID", foundUser.getId());
             return ResponseEntity
-                    .ok(Collections.singletonMap("response", "success"));
+                    .ok(Collections.singletonMap("role", foundUser.getRole()));
         } catch (InvalidCredentialsException e) {
             System.out.println(e.getMessage());
             return ResponseEntity

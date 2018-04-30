@@ -28,10 +28,10 @@ public class UserService {
         }
     }
 
-    public Long validateUser(User user) throws InvalidCredentialsException {
+    public User validateUser(User user) throws InvalidCredentialsException {
         User foundUser = userRepository.findUserByEmail(user.getEmail());
         if (foundUser != null && BCrypt.checkpw(user.getPassword(), foundUser.getPassword())) {
-            return foundUser.getId();
+            return foundUser;
         } else {
             throw new InvalidCredentialsException("Email or password is invalid");
         }
