@@ -58,9 +58,9 @@ export class RegistrationFormComponent implements OnInit {
 
   onSubmit(form: any) {
     const user: User = {
-      name: form.username,
-      password: form.password,
-      email: form.email
+      name: form.username.trim(),
+      password: form.password.trim(),
+      email: form.email.trim()
     };
     this.userService
       .registerUser(user)

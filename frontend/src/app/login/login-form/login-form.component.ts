@@ -44,8 +44,8 @@ export class LoginFormComponent implements OnInit {
 
   onSubmit(form: any) {
     const user: User = {
-      email: form.email,
-      password: form.password,
+      email: form.email.trim(),
+      password: form.password.trim(),
     };
     this.userService
       .loginUser(user)
