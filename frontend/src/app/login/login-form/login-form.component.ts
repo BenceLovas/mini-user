@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {UserService} from '../../user.service';
 import {User} from '../../user';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login-form',
@@ -23,7 +24,8 @@ export class LoginFormComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder,
+    private router: Router) {
   }
 
   ngOnInit() {
@@ -49,10 +51,13 @@ export class LoginFormComponent implements OnInit {
       .loginUser(user)
       .subscribe(
         data => {
-          console.log(data);
+          switch (data.role) {
+            case 'ADMIN': this.router.navigate(['/admin/dashboard']); break;
+            case 'USER': this.router.navigate(['/dashboard']); break;
+            default: this.router.navigate(['/login']);
+          }
         },
         error => {
-          console.log(error);
           this.invalidCredentials = true;
         }
       );
