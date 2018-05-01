@@ -22,3 +22,20 @@ mat-icon {
   height: 70px;
   color: #f44336;
 }
+
+#text-mini {
+  font-weight: 300;
+}
+
+#text-user {
+  font-weight: 800;
+}
+
+#logo {
+  font-family: Raleway, "Helvetica Neue", sans-serif;
+  color: white;
+  margin-top: 12px;
+  margin-left: 2vw;
+  letter-spacing: 2px;
+  float: left;
+}
