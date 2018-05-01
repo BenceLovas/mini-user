@@ -7,6 +7,7 @@ import {
   MatIconModule,
   MatInputModule,
   MatPaginatorModule,
+  MatSnackBarModule,
   MatSortModule,
   MatTableModule,
   MatTabsModule
@@ -23,6 +24,7 @@ import {
     MatPaginatorModule,
     MatSortModule,
     MatTableModule,
+    MatSnackBarModule,
   ],
   exports: [
     MatButtonModule,
@@ -34,6 +36,7 @@ import {
     MatPaginatorModule,
     MatSortModule,
     MatTableModule,
+    MatSnackBarModule,
   ],
 })
 
