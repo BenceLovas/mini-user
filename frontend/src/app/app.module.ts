@@ -3,14 +3,14 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { LoginFormComponent } from './login/login-form/login-form.component';
 import { RegistrationFormComponent } from './login/registration-form/registration-form.component';
-import { MaterialModule } from './material.module';
+import { MaterialModule } from './module/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { UserService } from './user.service';
+import { UserService } from './service/user.service';
 import { HttpClientModule } from '@angular/common/http';
-import { AppRoutingModule, routingComponents } from './app-routing.module';
-import { UserAuthenticationService } from './user-authentication.service';
-import { AdminAuthenticationService } from './admin-authentication.service';
+import { AppRoutingModule, routingComponents } from './module/app-routing.module';
+import { UserAuthenticationService } from './service/user-authentication.service';
+import { AdminAuthenticationService } from './service/admin-authentication.service';
 
 @NgModule({
   declarations: [

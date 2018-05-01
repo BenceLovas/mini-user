@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from '@angular/forms';
-import {UserService} from '../../user.service';
-import {User} from '../../user';
+import {UserService} from '../../service/user.service';
+import {User} from '../../model/user';
 import {Router} from '@angular/router';
 import {FormErrorStateMatcher} from '../shared/formErrorStateMatcher';
 
