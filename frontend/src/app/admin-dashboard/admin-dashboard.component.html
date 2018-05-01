@@ -1,3 +1,7 @@
+<div class="header">
+  <button id="logout" mat-button (click)="logout()">Log Out</button>
+</div>
+
 <div class="filter-wrapper">
   <mat-form-field>
     <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">

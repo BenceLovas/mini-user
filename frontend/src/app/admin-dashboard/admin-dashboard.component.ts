@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {UserService} from '../user.service';
 import {User} from '../user';
 import {MatPaginator, MatSnackBar, MatSort, MatTableDataSource} from '@angular/material';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -18,7 +19,11 @@ export class AdminDashboardComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private userService: UserService, private snackBar: MatSnackBar) {}
+  constructor(
+    private userService: UserService,
+    private snackBar: MatSnackBar,
+    private router: Router) {
+  }
 
   ngOnInit() {
     this.userService.getUsers()
@@ -39,6 +44,14 @@ export class AdminDashboardComponent implements OnInit {
     filterValue = filterValue.toLowerCase();
     this.filter = filterValue;
     this.dataSource.filter = filterValue;
+  }
+
+  logout() {
+    this.userService.logoutUser()
+      .subscribe(
+        data => this.router.navigate(['/login']),
+        error => console.log(error)
+      );
   }
 
   deleteUser(user) {

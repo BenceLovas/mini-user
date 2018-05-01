@@ -44,5 +44,21 @@ mat-form-field {
 }
 
 .filter-wrapper {
+  margin-top: 60px;
   background-color: #f6f6f6;
+}
+
+.header {
+  height: 60px;
+  min-width: 100vw;
+  background-color: #0D47A1;
+  position: fixed;
+  top: 0;
+}
+
+#logout {
+  float: right;
+  margin-right: 3vw;
+  margin-top: 10px;
+  background-color: white;
 }
