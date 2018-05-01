@@ -1,0 +1,48 @@
+.mat-column-id {
+  flex: 0 1 10%;
+}
+
+.mat-column-name {
+  flex: 2 1 35%;
+}
+
+.mat-column-email {
+  flex: 2 1 40%;
+}
+
+.mat-column-actions {
+  flex: 0 1 15%;
+}
+
+.mat-row {
+  padding: 0 2vw;
+}
+
+.mat-row:hover {
+  background-color: #f6f6f6;
+}
+
+.mat-header-row {
+  padding: 0 2vw;
+}
+
+mat-paginator {
+  width: 100vw;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+.mat-table {
+  overflow: auto;
+  margin-bottom: 100px;
+}
+
+mat-form-field {
+  margin-top: 3vh;
+  margin-left: 10vw;
+}
+
+.filter-wrapper {
+  background-color: #f6f6f6;
+}
