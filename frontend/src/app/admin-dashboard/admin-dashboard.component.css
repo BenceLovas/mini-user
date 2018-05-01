@@ -51,7 +51,7 @@ mat-form-field {
 .header {
   height: 60px;
   min-width: 100vw;
-  background-color: #0D47A1;
+  background-color: #222222;
   position: fixed;
   top: 0;
   z-index: 99;
