@@ -76,4 +76,10 @@ public class UserController {
         }
     }
 
+    @GetMapping("/user/logout")
+    public ResponseEntity logout(HttpSession session) {
+        session.removeAttribute("userID");
+        return ResponseEntity.ok(Collections.singletonMap("response", "logged out"));
+    }
+
 }
