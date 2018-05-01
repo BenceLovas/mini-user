@@ -5,12 +5,14 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import {LoginComponent} from './login/login.component';
 import {UserAuthenticationService} from './user-authentication.service';
 import {AdminAuthenticationService} from './admin-authentication.service';
+import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [UserAuthenticationService] },
   { path: 'admin/dashboard', component: AdminDashboardComponent, canActivate: [AdminAuthenticationService] },
   { path: '', canActivate: [UserAuthenticationService], redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
