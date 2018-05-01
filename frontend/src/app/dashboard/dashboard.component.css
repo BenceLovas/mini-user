@@ -1,0 +1,11 @@
+.header {
+  height: 60px;
+  background-color: #0D47A1;
+}
+
+button {
+  float: right;
+  margin-right: 3vw;
+  margin-top: 10px;
+  background-color: white;
+}
