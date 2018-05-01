@@ -52,15 +52,10 @@ public class UserController {
         }
     }
 
-    @GetMapping("/users")
-    public ResponseEntity getUsers() {
-        return ResponseEntity.ok(userService.getUsers());
-    }
-
-    @DeleteMapping("/user/{id}")
-    public ResponseEntity deleteUser(@PathVariable Long id) {
-        List<User> remainingUsers = userService.deleteUser(id);
-        return ResponseEntity.ok(remainingUsers);
+    @GetMapping("/user/logout")
+    public ResponseEntity logout(HttpSession session) {
+        session.removeAttribute("userID");
+        return ResponseEntity.ok(Collections.singletonMap("response", "logged out"));
     }
 
     @GetMapping("/user/authenticate")
@@ -76,10 +71,15 @@ public class UserController {
         }
     }
 
-    @GetMapping("/user/logout")
-    public ResponseEntity logout(HttpSession session) {
-        session.removeAttribute("userID");
-        return ResponseEntity.ok(Collections.singletonMap("response", "logged out"));
+    @GetMapping("/users")
+    public ResponseEntity getUsers() {
+        return ResponseEntity.ok(userService.getUsers());
+    }
+
+    @DeleteMapping("/user/{id}")
+    public ResponseEntity deleteUser(@PathVariable Long id) {
+        List<User> remainingUsers = userService.deleteUser(id);
+        return ResponseEntity.ok(remainingUsers);
     }
 
 }
