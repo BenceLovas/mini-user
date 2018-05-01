@@ -1,6 +1,6 @@
 # Mini-User
 
-The application contains a login/registration page, where users can login/registrate. Only the administrator is able to see the user list and delete users. The admin user is saved to the database on server ignition.
+The application contains a page, where users can login/registrate. Only the administrator is able to see the user list and delete users. The admin user is saved to the database on server ignition.
 
 ## Install Guide
 
@@ -21,4 +21,5 @@ The application contains a login/registration page, where users can login/regist
 ## First Steps
 
 1. To **log in** as an *administrator* - **email**: admin@admin.hu, **password**: admin123
+2. You can delete users or sort, paginate and filter their data.
 2. Enjoy!
