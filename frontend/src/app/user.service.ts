@@ -22,6 +22,10 @@ export class UserService {
     return this.http.post('api/user/login', user).catch(this.errorHandler);
   }
 
+  logoutUser() {
+    return this.http.get('api/user/logout').catch(this.errorHandler);
+  }
+
   getUsers() {
     return this.http.get<User[]>('api/users').catch(this.errorHandler);
   }
