@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.Collections;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -54,6 +55,12 @@ public class UserController {
     @GetMapping("/users")
     public ResponseEntity getUsers() {
         return ResponseEntity.ok(userService.getUsers());
+    }
+
+    @DeleteMapping("/user/{id}")
+    public ResponseEntity deleteUser(@PathVariable Long id) {
+        List<User> remainingUsers = userService.deleteUser(id);
+        return ResponseEntity.ok(remainingUsers);
     }
 
 }
