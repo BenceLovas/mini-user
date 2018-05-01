@@ -12,6 +12,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import {UserAuthenticationService} from './user-authentication.service';
+import {AdminAuthenticationService} from './admin-authentication.service';
 
 
 @NgModule({
@@ -33,7 +35,9 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
     AppRoutingModule
   ],
   providers: [
-    UserService
+    UserService,
+    UserAuthenticationService,
+    AdminAuthenticationService,
   ],
   bootstrap: [AppComponent]
 })
