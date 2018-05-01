@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {UserService} from '../user.service';
 import {User} from '../user';
-import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {MatPaginator, MatSnackBar, MatSort, MatTableDataSource} from '@angular/material';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -18,7 +18,7 @@ export class AdminDashboardComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private snackBar: MatSnackBar) {}
 
   ngOnInit() {
     this.userService.getUsers()
@@ -26,6 +26,12 @@ export class AdminDashboardComponent implements OnInit {
         data => this.fillTable(data),
         error => console.log(error)
       );
+  }
+
+  openSnackBar(message: string) {
+    this.snackBar.open(message, '',{
+      duration: 2500,
+    });
   }
 
   applyFilter(filterValue: string) {
@@ -42,8 +48,12 @@ export class AdminDashboardComponent implements OnInit {
           this.afterDelete = true;
           this.fillTable(data);
           this.afterDelete = false;
+          this.openSnackBar(`${user.name} successfully deleted.`);
         },
-        error => console.log(error),
+        error => {
+          console.log(error);
+          this.openSnackBar('Something went wrong. Please try again.');
+        },
       );
   }
 
