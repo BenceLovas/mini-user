@@ -14,6 +14,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import {UserAuthenticationService} from './user-authentication.service';
 import {AdminAuthenticationService} from './admin-authentication.service';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import {AdminAuthenticationService} from './admin-authentication.service';
     LoginFormComponent,
     RegistrationFormComponent,
     DashboardComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
