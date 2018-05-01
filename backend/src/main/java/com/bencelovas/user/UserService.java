@@ -47,4 +47,10 @@ public class UserService {
         userRepository.delete(id);
         return userRepository.findAll();
     }
+
+    public UserRole getUserAuthority(Long id) {
+        User user = userRepository.findOne(id);
+        return user.getRole();
+    }
+
 }

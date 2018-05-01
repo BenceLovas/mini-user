@@ -63,4 +63,17 @@ public class UserController {
         return ResponseEntity.ok(remainingUsers);
     }
 
+    @GetMapping("/user/authenticate")
+    public ResponseEntity userAuthentication(HttpSession session) {
+        if (session.getAttribute("userID") != null) {
+            UserRole userRole = userService.getUserAuthority((Long) session.getAttribute("userID"));
+            return ResponseEntity
+                    .ok(Collections.singletonMap("role", userRole));
+        } else {
+            return ResponseEntity
+                    .status(HttpStatus.UNAUTHORIZED)
+                    .body(Collections.singletonMap("response", "not logged in"));
+        }
+    }
+
 }
