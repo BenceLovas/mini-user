@@ -25,4 +25,9 @@ export class UserService {
   getUsers() {
     return this.http.get<User[]>('api/users').catch(this.errorHandler);
   }
+
+  deleteUser(user: User) {
+    return this.http.delete<User[]>(`api/user/${user.id}`).catch(this.errorHandler);
+  }
+
 }
