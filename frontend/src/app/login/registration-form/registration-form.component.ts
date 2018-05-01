@@ -3,6 +3,7 @@ import {FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validat
 import {User} from '../../user';
 import {UserService} from '../../user.service';
 import {Router} from '@angular/router';
+import {FormErrorStateMatcher} from '../shared/formErrorStateMatcher';
 
 @Component({
   selector: 'app-registration-form',
@@ -15,12 +16,7 @@ export class RegistrationFormComponent implements OnInit {
   @Output() public toggleEvent = new EventEmitter();
   registrationForm: FormGroup;
   failedEmail: string;
-  matcher = {
-    isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-      const isSubmitted = form && form.submitted;
-      return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-    }
-  };
+  matcher = new FormErrorStateMatcher();
 
   constructor(
     private userService: UserService,
