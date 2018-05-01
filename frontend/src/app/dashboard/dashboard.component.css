@@ -1,0 +1,41 @@
+.header {
+  height: 60px;
+  background-color: #222222;
+}
+
+button {
+  float: right;
+  margin-right: 3vw;
+  margin-top: 10px;
+  background-color: white;
+}
+
+.main {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  margin: 10vh 10vw;
+  text-align: center;
+}
+
+mat-icon {
+  font-size: 70px;
+  width: 70px;
+  height: 70px;
+  color: #f44336;
+}
+
+#text-mini {
+  font-weight: 300;
+}
+
+#text-user {
+  font-weight: 800;
+}
+
+#logo {
+  font-family: Raleway, "Helvetica Neue", sans-serif;
+  color: white;
+  margin-top: 12px;
+  margin-left: 2vw;
+  letter-spacing: 2px;
+  float: left;
+}

@@ -1,0 +1,35 @@
+form {
+  padding: 0 2vw;
+  display: grid;
+  grid-template-columns: 100%;
+}
+
+.wrapper {
+  margin-bottom: 5%;
+}
+
+.mat-expansion-panel {
+  overflow-y: hidden;
+}
+
+.mat-expansion-panel-header-description {
+  flex-grow: 0;
+}
+
+::ng-deep .mat-expansion-indicator:after {
+  margin-bottom: 7px;
+}
+
+mat-panel-title,
+.button-text {
+  font-weight: bold;
+}
+
+.button-text {
+  color: white;
+}
+
+.submit-button {
+  margin-top: 10px;
+  background-color: #0D47A1;
+}
