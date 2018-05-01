@@ -19,27 +19,57 @@ import java.util.List;
 public class InitializerBean {
 
     private UserRepository userRepository;
-    private List<User> users = new ArrayList<User>() {{
-        add(new User("Pedro Michalek", BCrypt.hashpw("password", BCrypt.gensalt()), "pedro@gmail.com"));
-        add(new User("Michelle Runkle", BCrypt.hashpw("password", BCrypt.gensalt()), "michelle@gmail.com"));
-        add(new User("Eleanor Canedy", BCrypt.hashpw("password", BCrypt.gensalt()), "eleanor@gmail.com"));
-        add(new User("Georgia Likens", BCrypt.hashpw("password", BCrypt.gensalt()), "georgia@gmail.com"));
-        add(new User("Phil Jerman", BCrypt.hashpw("password", BCrypt.gensalt()), "phil@gmail.com"));
-        add(new User("Brigitte Hooten", BCrypt.hashpw("password", BCrypt.gensalt()), "brigitte@gmail.com"));
-        add(new User("Ricarda Chrisman", BCrypt.hashpw("password", BCrypt.gensalt()), "ricarda@gmail.com"));
-        add(new User("Keeley Drakeford", BCrypt.hashpw("password", BCrypt.gensalt()), "keeley@gmail.com"));
-        add(new User("Drew Baham", BCrypt.hashpw("password", BCrypt.gensalt()), "drew@gmail.com"));
-        add(new User("Rachel Dimond", BCrypt.hashpw("password", BCrypt.gensalt()), "rachel@gmail.com"));
-        add(new User("Quinton Mccrea", BCrypt.hashpw("password", BCrypt.gensalt()), "quinton@gmail.com"));
-        add(new User("Sharen Risser", BCrypt.hashpw("password", BCrypt.gensalt()), "sharen@gmail.com"));
-        add(new User("Theresia Hedgepeth", BCrypt.hashpw("password", BCrypt.gensalt()), "theresia@gmail.com"));
-        add(new User("Monnie Darville", BCrypt.hashpw("password", BCrypt.gensalt()), "monnie@gmail.com"));
-        add(new User("Dino Ocampo", BCrypt.hashpw("password", BCrypt.gensalt()), "dino@gmail.com"));
-        add(new User("Tina Pegram", BCrypt.hashpw("password", BCrypt.gensalt()), "tina@gmail.com"));
-        add(new User("Florance Abernethy", BCrypt.hashpw("password", BCrypt.gensalt()), "florance@gmail.com"));
-        add(new User("Elly Joe", BCrypt.hashpw("password", BCrypt.gensalt()), "elly@gmail.com"));
-        add(new User("Rhiannon Messerly", BCrypt.hashpw("password", BCrypt.gensalt()), "rhiannon@gmail.com"));
-        add(new User("Sheryll Overbey", BCrypt.hashpw("password", BCrypt.gensalt()), "sheryll@gmail.com"));
+    private List<String> userNames = new ArrayList<String>() {{
+        add("Lavinia Kendra");
+        add("Silva Pouncey");
+        add("Yolanda Pointer");
+        add("Leo Hosier");
+        add("France Defalco");
+        add("Mattie Madera");
+        add("Jamee Dipalma");
+        add("Jeff Collinson");
+        add("Laveta Lazos");
+        add("Madge Deschaine");
+        add("Steve Kilkenny");
+        add("Roland Chalfant");
+        add("Latanya Spiker");
+        add("Bessie Wohlgemuth");
+        add("Sharonda Savidge");
+        add("Many Debusk");
+        add("Milagro Luiz");
+        add("Rosalba Carter");
+        add("Joan Appleberry");
+        add("Kellie Mcfaddin");
+        add("Dusty Rouillard");
+        add("Katrice Falk");
+        add("Rebekah Dolby");
+        add("Russ Barney");
+        add("Christina Southward");
+        add("Sharyl Boshart");
+        add("Floy Streich");
+        add("Chante Subia");
+        add("Ute Creasy");
+        add("Marti Wimsatt");
+        add("Mitchel Jerome");
+        add("Zoila Thieme");
+        add("Marquerite Bassi");
+        add("Leola Limbaugh");
+        add("Rick Robledo");
+        add("Kenny Jasik");
+        add("Ozella Schauwecker");
+        add("Kasi London");
+        add("Marlene Watters");
+        add("Saul Lacoste");
+        add("Marcelene Shield");
+        add("Christen Bise");
+        add("Samatha Campisi");
+        add("Rolando Parks");
+        add("Idella Dishon");
+        add("Patience Munos");
+        add("Christopher Villalpando");
+        add("Marlys Geissler");
+        add("Warner Lybarger");
+        add("Zena Klug");
     }};
 
     @Autowired
@@ -54,13 +84,17 @@ public class InitializerBean {
         try {
             userRepository.save(admin);
         } catch (DataIntegrityViolationException exception) {
-            System.out.println("Admin email was already taken");
+            System.out.println("Admin email already in use");
         }
     }
 
     @PostConstruct
     public void populateDatabase() {
-        userRepository.save(users);
+        for (String userName : userNames) {
+            String hashedPassword = BCrypt.hashpw("password", BCrypt.gensalt());
+            String email = userName.split("\\s+")[0].toLowerCase() + "@gmail.com";
+            userRepository.save(new User(userName, hashedPassword, email));
+        }
     }
 
 }
